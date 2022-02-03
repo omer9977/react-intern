@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <><link
+  async
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css" /><BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter></>,
   document.getElementById('root')
 );
 
