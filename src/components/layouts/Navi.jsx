@@ -1,32 +1,20 @@
 import React, { Component } from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 
-export default class MenuExampleInverted extends Component {
-  state = { activeItem: 'home' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
+export default function Navi() {
 
     return (
-      <Menu inverted>
-        <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='messages'
-          active={activeItem === 'messages'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='friends'
-          active={activeItem === 'friends'}
-          onClick={this.handleItemClick}
-        />
-      </Menu>
+      <Navbar variant='dark' bg='dark' className="justify-content-end">
+      <Nav activeKey="/">
+        <Nav.Item>
+          <Nav.Link as={Link} to="/">Login</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link as={Link} to="products">Logout</Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </Navbar>
     )
   }
-}

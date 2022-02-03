@@ -1,38 +1,36 @@
 import React from 'react'
+import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Checkbox, Grid, Menu, Sidebar } from 'semantic-ui-react'
+import { SidebarData } from '../../data/SidebarData';
+import "../../css/Navbar.css";
 
 
 export default function SideBar() {
   const [visible, setVisible] = React.useState(false)
 
-  return (
-    <Grid>
-      <Grid.Column width={16}>
-        <Checkbox
-          checked={visible}
-          label={{ children: <code>visible</code> }}
-          onChange={(e, data) => setVisible(data.checked)}
-        />
-      </Grid.Column>
-
-      <Grid.Column width={4}>
-          <Sidebar
-            as={Menu}
-            animation='overlay'
-            icon='labeled'
-            inverted
-            onHide={() => {
-              setVisible(false)
-            }}
-            vertical
-            visible={visible}
-            width='thin'
-          >
-            <Menu.Item as='a'>Home</Menu.Item>
-            <Menu.Item as='a'>Games</Menu.Item>
-            <Menu.Item as='a'>Channels</Menu.Item>
-          </Sidebar>
-      </Grid.Column>
-    </Grid>
-  )
+  return  <>
+      
+    <Nav className='nav-menu active'>
+        
+    <ul className='nav-menu-items'>
+      <li className='navbar-toggle'>
+      <Navbar.Brand className='nav-text'>School Management System</Navbar.Brand>
+        {/* <Link to='#' className='menu-bars'>
+          <AiIcons.AiOutlineClose />
+        </Link> */}
+      </li>
+      {SidebarData.map((item, index) => {
+        return (
+          <li key={index} className={item.cName}>
+            <Link to={item.path}>
+              {item.icon}
+              <span>{item.title}</span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  </Nav></>;
+  
 }

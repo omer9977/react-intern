@@ -6,8 +6,6 @@ import SideBar from './components/layouts/SideBar';
 function App() {
   return (
     <div className="App">
-      <Navi/>
-      <SideBar/>
       <Dashboard/>
     </div>
   );
