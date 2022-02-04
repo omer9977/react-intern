@@ -1,6 +1,7 @@
 import { useField } from 'formik';
 import React from 'react';
 import { FormField, Label } from 'semantic-ui-react';
+import '../css/Login.css'
 
 export default function TextInput({...props}) {
   

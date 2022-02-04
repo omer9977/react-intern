@@ -1,15 +1,15 @@
 @media all and (min-width: 480px) {
     .login {
         display: block;
-        width: fit-content;
-        margin-left: 480px;
+        width: 500px;
+        margin-left: 400px;
         margin-top: 200px;
         text-align: center;
-        
+        height: 500px;
     }
   
-    .login-form {
-      margin: 0 auto;
-      max-width: 320px;
+    .textfield {
+      margin-bottom: 500px;
+      margin-top: 50px;
     }
   }
