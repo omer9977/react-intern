@@ -21,18 +21,20 @@ export default function Login() {
     console.log(values)
   }
 
-  return <div><Formik
+  return <div className='login'><Formik
     initialValues={initialValues}
     validationSchema={validationSchema}
     onSubmit={(values) => {
       console.log(values)
     }}
   >
-    <Form className="ui inverted form login">
+    <Segment size='huge' padded color='black' inverted>
+    <Form className="ui form">
       <TextInput name="email" placeholder="Email"></TextInput>
-      <TextInput name="password" placeholder="Password"></TextInput>
+      <TextInput type="password" name="password" placeholder="Password"></TextInput>
       <Button type="submit">Submit</Button>
     </Form>
+    </Segment>
   </Formik>
   </div>
 }
