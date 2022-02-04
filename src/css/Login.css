@@ -1,0 +1,15 @@
+@media all and (min-width: 480px) {
+    .login {
+        display: block;
+        width: fit-content;
+        margin-left: 480px;
+        margin-top: 200px;
+        text-align: center;
+        
+    }
+  
+    .login-form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }

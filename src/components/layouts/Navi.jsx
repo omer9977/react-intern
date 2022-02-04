@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Button, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 
 export default function Navi() {
 
     return (
-      <Navbar variant='dark' bg='dark' className="justify-content-end">
+      <Navbar className="justify-content-end">
       <Nav activeKey="/">
         <Nav.Item>
-          <Nav.Link as={Link} to="/">Login</Nav.Link>
+          <Button as={Link} to="login" className='button'>Login</Button>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link as={Link} to="products">Logout</Nav.Link>
+          <Button as={Link} to="products" className='button'>Logout</Button>
         </Nav.Item>
       </Nav>
     </Navbar>
