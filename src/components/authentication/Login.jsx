@@ -4,7 +4,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import TextInput from '../../utilities/formControl';
 import '../../css/Login.css'
-import { Segment } from 'semantic-ui-react';
+import { Label, Segment } from 'semantic-ui-react';
 
 export default function Login() {
   const initialValues = {
@@ -28,7 +28,8 @@ export default function Login() {
       console.log(values)
     }}
   >
-    <Segment size='huge' padded color='black' inverted>
+    <Segment size='huge' padded color='black'>
+    <h3>Login</h3>
     <Form className="ui form">
       <TextInput name="email" placeholder="Email"></TextInput>
       <TextInput type="password" name="password" placeholder="Password"></TextInput>

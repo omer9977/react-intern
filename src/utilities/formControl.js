@@ -12,7 +12,9 @@ export default function TextInput({...props}) {
           <input {...field} {...props}/>
           {meta.touched && !!meta.error ? (
               <Label pointing basic color='red' content={meta.error}></Label>
-          ):null}
+          ):(
+              <><br/><br/><br/></>
+          )}
       </FormField>
   );
 }
