@@ -1,8 +1,9 @@
 import React from 'react';
+import { Button, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function SignedOut({signIn}) {
-  return  <Menu.Item>
-  <Button onClick={signIn} primary>Giriş Yap</Button>
-  <Button primary style={{marginLeft:"0.5em"}}>Kayıt Ol</Button>
-</Menu.Item>;
+  return  <Nav.Item>
+  <Button as={Link} to="login" onClick={signIn} className='button'>Login</Button>
+</Nav.Item>;
 }

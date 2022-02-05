@@ -7,17 +7,15 @@ import "../../css/Navbar.css";
 
 
 export default function SideBar() {
-  const [visible, setVisible] = React.useState(false)
-
   return  <>
       
     <Nav className='nav-menu active'>
         
     <ul className='nav-menu-items'>
       <li className='navbar-toggle'>
-      <Navbar.Brand className='nav-text'>School Management System</Navbar.Brand>
+      <Navbar.Brand className='navbar-text'>School Management System</Navbar.Brand>
         {/* <Link to='#' className='menu-bars'>
-          <AiIcons.AiOutlineClose />
+         asdsadf
         </Link> */}
       </li>
       {SidebarData.map((item, index) => {
