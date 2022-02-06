@@ -24,12 +24,6 @@ export default function Navi() {
     return (
       <Navbar className="justify-content-end">
       <Nav activeKey="/">
-        {/* <Nav.Item>
-          <Button as={Link} to="login" className='button'>Login</Button>
-        </Nav.Item>
-        <Nav.Item>
-          <Button as={Link} to="products" className='button'>Logout</Button>
-        </Nav.Item> */}
         {isAuthennticated?<SignedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}
       </Nav>
     </Navbar>

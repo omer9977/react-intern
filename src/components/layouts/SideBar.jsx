@@ -13,7 +13,7 @@ export default function SideBar() {
         
     <ul className='nav-menu-items'>
       <li className='navbar-toggle'>
-      <Navbar.Brand className='navbar-text'>School Management System</Navbar.Brand>
+      <Navbar.Brand className='navbar-text'>School Management</Navbar.Brand>
         {/* <Link to='#' className='menu-bars'>
          asdsadf
         </Link> */}
