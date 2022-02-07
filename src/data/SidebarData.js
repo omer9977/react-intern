@@ -19,7 +19,7 @@ export const SidebarData = [
   {
     title: 'Students',
     path: '/products',
-    icon: <FaIcons.FaCartPlus />,
+    icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
@@ -31,7 +31,7 @@ export const SidebarData = [
   {
     title: 'Users',
     path: '/users',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   }
 ];
