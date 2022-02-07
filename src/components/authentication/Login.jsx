@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import TextInput from '../../utilities/formControl';
 import '../../css/Login.css'
 import { Label, Segment } from 'semantic-ui-react';
+import UserService from '../../services/userService';
 
 export default function Login() {
   const initialValues = {
@@ -17,15 +18,17 @@ export default function Login() {
     password: Yup.string().required('Required')
   })
 
-  const onSubmit = values => {
-    console.log(values)
+  function handleSubmit(values){
+    let userService = new UserService();
+    userService.getUserByUsernameAndEmail(values.email, values.password).then(result => console.log(result))
   }
 
   return <div className='login'><Formik
     initialValues={initialValues}
     validationSchema={validationSchema}
     onSubmit={(values) => {
-      console.log(values)
+      handleSubmit(values)
+      // console.log(values.email)
     }}
   >
     <Segment size='huge' padded color='black'>

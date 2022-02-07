@@ -5,14 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import { configureStore } from './store/configureStore';
 
 ReactDOM.render(
   <><link
   async
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css" /><BrowserRouter>
+  href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css" />
+  <Provider store={configureStore()}>
+  <BrowserRouter>
     <App />
-  </BrowserRouter></>,
+  </BrowserRouter></Provider></>,
   document.getElementById('root')
 );
 

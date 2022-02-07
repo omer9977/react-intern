@@ -17,14 +17,14 @@ export default function Navi() {
     history.push("/");
   }
 
-  function handleSignIn(){
-    setIsAuthennticated(true);
-  }
+  // function handleSignIn(){
+  //   setIsAuthennticated(true);
+  // }
 
     return (
       <Navbar className="justify-content-end">
       <Nav activeKey="/">
-        {isAuthennticated?<SignedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}
+        {isAuthennticated?<SignedIn signOut={handleSignOut}/>:<SignedOut/>}
       </Nav>
     </Navbar>
     )
