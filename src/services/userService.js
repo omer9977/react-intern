@@ -1,18 +1,20 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 
-export default class UserService{
-    getUsers(){
-        return axios.get("https://jsonplaceholder.typicode.com/users");
+export default class UserService {
+
+    getUsers() {
+        return axios.get("https://smapi.eu-west-3.elasticbeanstalk.com/admin/users");
     }
 
-    async getUserByUsernameAndEmail(email, username){
-        let users = [];
-        await this.getUsers().then(result => users = result.data);
-        const user = users.find((u)=>u.username===username && u.email===email);
+    async getUserByUsernameAndPassword(username, password) {
+        let user = {}
+        await axios.post("https://smapi.eu-west-3.elasticbeanstalk.com/user/token",
+            { username: username, password: password }).then(result => user = result.data)
         return user;
     }
 
-    getUserById(id){
-        return axios.get("https://jsonplaceholder.typicode.com/users/"+id);
+    getUserById(id) {
+        return axios.get("https://jsonplaceholder.typicode.com/users/" + id);
     }
 }

@@ -6,38 +6,63 @@ import TextInput from '../../utilities/formControl';
 import '../../css/Login.css'
 import { Label, Segment } from 'semantic-ui-react';
 import UserService from '../../services/userService';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../store/actions/authActions';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
+
+  const history = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const { userValue } = useSelector(state => state.user)
+
   const initialValues = {
-    email: '',
+    username: '',
     password: ''
   }
 
   const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid Email Format').required('Required'),
+    username: Yup.string().required('Required'),
     password: Yup.string().required('Required')
   })
 
-  function handleSubmit(values){
+  async function handleSubmit(values) {
     let userService = new UserService();
-    userService.getUserByUsernameAndEmail(values.email, values.password).then(result => console.log(result))
+
+    
+
+    let user = {}
+    await userService.getUserByUsernameAndPassword(values.username, values.password).then(result => user = result)
+    axios.interceptors.request.use(
+      config => {
+        config.headers.authorization = `Bearer ${user.token}`;
+        return config
+      }
+    )
+    console.log(user.token)
+    dispatch(login(user))
+    // history.push("/");
   }
+
+
 
   return <div className='login'><Formik
     initialValues={initialValues}
     validationSchema={validationSchema}
     onSubmit={(values) => {
       handleSubmit(values)
-      // console.log(values.email)
     }}
   >
     <Segment size='huge' padded color='black'>
-    <h3>Login</h3>
-    <Form className="ui form">
-      <TextInput name="email" placeholder="Email"></TextInput>
-      <TextInput type="password" name="password" placeholder="Password"></TextInput>
-      <Button type="submit">Submit</Button>
-    </Form>
+      <h3>Login</h3>
+      <Form className="ui form">
+        <TextInput name="username" placeholder="Username"></TextInput>
+        <TextInput type="password" name="password" placeholder="Password"></TextInput>
+        <Button type="submit">Submit</Button>
+      </Form>
     </Segment>
   </Formik>
   </div>

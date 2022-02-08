@@ -8,9 +8,9 @@ export function login(user){
     }
 }
 
-export function logout(user){
+export function logout(){
     return{
         type: LOGOUT,
-        payload: user
+        payload: {}
     }
 }

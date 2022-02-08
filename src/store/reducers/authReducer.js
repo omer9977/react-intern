@@ -12,7 +12,7 @@ export default function authReducer(state = initialState, { type, payload }) {
         case LOGIN:
             return {
                 ...state,
-                userValue: [...state.userValue, { user: payload }]
+                userValue: { user: payload }
             }
 
         case LOGOUT:

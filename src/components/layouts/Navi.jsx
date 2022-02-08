@@ -5,15 +5,21 @@ import { Menu } from 'semantic-ui-react'
 import { useNavigate } from "react-router-dom";
 import SignedIn from '../authentication/SignedIn';
 import SignedOut from '../authentication/SignedOut';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/actions/authActions';
 
 
 export default function Navi() {
-  const [isAuthennticated, setIsAuthennticated] = useState(false);
+  // const [isAuthennticated, setIsAuthennticated] = useState(false);
 
+  const {userValue} = useSelector(state => state.user)
+  
   const history = useNavigate();
 
+  const dispatch = useDispatch();
+
   function handleSignOut(){
-    setIsAuthennticated(false);
+    dispatch(logout())
     history.push("/");
   }
 
@@ -24,7 +30,9 @@ export default function Navi() {
     return (
       <Navbar className="justify-content-end">
       <Nav activeKey="/">
-        {isAuthennticated?<SignedIn signOut={handleSignOut}/>:<SignedOut/>}
+        {userValue.user!=null
+        ?<SignedIn signOut={handleSignOut}/>
+        :<SignedOut/>}
       </Nav>
     </Navbar>
     )
