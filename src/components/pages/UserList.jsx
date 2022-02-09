@@ -1,9 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Button, Table } from 'react-bootstrap';
 import UserService from '../../services/userService';
+import { Link } from 'react-router-dom';
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
@@ -43,5 +41,6 @@ export default function UserList() {
           </tr>
         ))}
     </tbody>
+    <Button as={Link} to="add" >Add New User</Button>
   </Table>;
 }

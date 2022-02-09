@@ -14,9 +14,11 @@ import UserDetail from '../pages/UserDetail';
 import UserList from '../pages/UserList';
 import Navi from './Navi';
 import SideBar from './SideBar';
+import { ToastContainer } from 'react-toastify';
 
 export default function Dashboard() {
   return <>
+  <ToastContainer position="bottom-right"/>
   <Navi />
   <Container>
     <Row>

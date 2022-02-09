@@ -2,16 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import CourseService from '../../services/courseService';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { roles } from '../../data/roles';
 
 export default function CourseList() {
   const [courses, setCourses] = useState([]);
-  const [coursess, setCoursess] = useState([]);
+
+  const {userValue} = useSelector(state => state.user)
 
   useEffect(() => {
-    let courseService = new CourseService();
-    courseService.getCourses().then(result => setCourses(result.data))
-    // courseService.getCoursess().then(result => setCoursess(result.data))
-// console.log(coursess)
+    let role = ""
+    if (Object.keys(userValue).length !== 0) {
+      // console.log(roles[userValue.user.roleId])
+      let role = roles[userValue.user.roleId]
+      let courseService = new CourseService(role);
+      courseService.getCoursess().then(result => setCourses(result.data))
+    } 
   }, [])
   return <Table responsive>
     <thead>

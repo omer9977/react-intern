@@ -8,30 +8,35 @@ export const SidebarData = [
     title: 'Home',
     path: '/',
     icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roleIds: [1, 2, 3, 4, 5]
   },
   {
     title: 'Courses',
-    path: '/reports',
+    path: '/courses',
     icon: <IoIcons.IoIosPaper />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roleIds: [2, 3, 5]
   },
   {
     title: 'Students',
-    path: '/products',
+    path: '/students',
     icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roleIds: [4, 5]
   },
   {
     title: 'Teachers',
-    path: '/team',
+    path: '/teachers',
     icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roleIds: [4, 5]
   },
   {
     title: 'Users',
     path: '/users',
     icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roleIds: [5]
   }
 ];
