@@ -15,8 +15,11 @@ import UserList from '../pages/UserList';
 import Navi from './Navi';
 import SideBar from './SideBar';
 import { ToastContainer } from 'react-toastify';
+import { PrivateRoute } from '../../utilities/PrivateRoute';
+import { useSelector } from 'react-redux';
 
 export default function Dashboard() {
+  const { userValue } = useSelector(state => state.user)
   return <>
   <ToastContainer position="bottom-right"/>
   <Navi />
@@ -35,7 +38,7 @@ export default function Dashboard() {
       <Route path='students/:id' exact element={<StudentDetail />} />
       <Route path='teachers' exact element={<TeacherList />} />
       <Route path='teachers/:id' exact element={<TeacherDetail />} />
-      <Route path='users' element={<UserList />} />
+      <PrivateRoute user={userValue} path='users' element={<UserList />} />
       <Route path='users/:id' element={<UserDetail />} />
       <Route path='users/add' element={<UserAdd />} />
       <Route exact path='login' element={<Login />} />

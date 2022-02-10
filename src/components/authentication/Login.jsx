@@ -9,7 +9,6 @@ import UserService from '../../services/userService';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/actions/authActions';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { token } from '../../data/token';
 
 export default function Login() {
@@ -42,8 +41,6 @@ export default function Login() {
     dispatch(login(user))
     // history.push("/");
   }
-
-
 
   return <div className='login'><Formik
     initialValues={initialValues}

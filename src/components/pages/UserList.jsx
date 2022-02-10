@@ -17,13 +17,13 @@ export default function UserList() {
   return <Table responsive>
     <thead>
       <tr>
-        <th>#</th>
-        <th>name</th>
-        <th>surname</th>
-        <th>username</th>
-        <th>phone</th>
-        <th>email</th>
-        <th>role</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Username</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Role</th>
       </tr>
     </thead>
     <tbody>
@@ -31,13 +31,13 @@ export default function UserList() {
         users.map(user => (
           <tr key={user.id}>
             <td>{user.id}</td>
-            <td><Link to={`/products/${user.id}`}>{user.name}</Link></td>
+            <td><Link to={`/users/${user.id}`}>{user.name} {user.surname}</Link></td>
             <td>{user.surname}</td>
             <td>{user.username}</td>
             <td>{user.phoneNumber}</td>
             <td>{user.email}</td>
             <td>{user.role}</td>
-            <td></td>
+            <td><Button variant='info' as={Link} to={`/users/${user.id}`}>Detail</Button></td>
           </tr>
         ))}
     </tbody>

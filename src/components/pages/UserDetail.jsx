@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as Yup from "yup";
-import { Button } from 'react-bootstrap'
-import CourseService from '../../services/courseService';
+import { Button } from 'react-bootstrap';
 import { Form, Formik } from 'formik';
 import TextInput from '../../utilities/formControl';
+import UserService from '../../services/userService';
+import { toast } from 'react-toastify';
 
 export default function UserDetail() {
   let { id } = useParams()
 
-  const [course, setCourse] = useState({});
+  const [user, setUser] = useState({});
+
+  let userService = new UserService();
 
   const initialValues = {
     id: '',
@@ -26,9 +29,17 @@ export default function UserDetail() {
     teacherName: Yup.string().required('Required')
   })
 
+  function deleteUser(userId) {
+    userService.deleteUser(userId).then(response => {toast.info(`${user.name} ${user.surname} is deleted.`)})
+    .catch(error => {
+      if(error){
+        toast.error(`${error}`)
+      }
+    });
+  }
+
   useEffect(() => {
-    let courseService = new CourseService();
-    courseService.getCourseById(id).then(result => setCourse(result.data))
+    userService.getUserById(id).then(result => setUser(result.data))
   }, [])
   return <Formik
     initialValues={initialValues}
@@ -39,21 +50,19 @@ export default function UserDetail() {
     }}
   ><Form className='ui form'>
       <label>ID</label>
-      <TextInput disabled name="id" placeholder="ID"></TextInput>
+      <TextInput disabled name="id" value={user.id}></TextInput>
+      <label>Username</label>
+      <TextInput disabled name="username" value={user.username}></TextInput>
       <label>Name</label>
-      <TextInput name="name" placeholder="Name"></TextInput>
-      <label>Subject</label>
-      <TextInput name="subject" placeholder="Subject"></TextInput>
-      <label>Teacher ID</label>
-      <TextInput name="teacherId" placeholder="Teacher ID"></TextInput>
-      <label>Teacher Name</label>
-      <TextInput disabled name="teacherName" placeholder="Teacher Name"></TextInput>
+      <TextInput disabled name="name" value={`${user.name} ${user.surname}`}></TextInput>
+      <label>Phone Number</label>
+      <TextInput disabled name="phoneNumber" value={user.phoneNumber}></TextInput>
+      <label>Email</label>
+      <TextInput disabled name="email" value={user.email}></TextInput>
+      <label>Role</label>
+      <TextInput disabled name="role" value={user.role}></TextInput>
 
-      <Button variant="primary" type="submit">
-        Update
-      </Button>
-
-      <Button variant="danger" type="button">
+      <Button onClick={()=>{deleteUser(user.id)}} variant="danger" type="button">
         Delete
       </Button>
     </Form></Formik>;

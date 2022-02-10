@@ -18,7 +18,11 @@ export default class UserService {
         return axios.post(`https://smapi.eu-west-3.elasticbeanstalk.com/admin/user`,user);
     }
 
+    deleteUser(userId){
+        return axios.delete(`https://smapi.eu-west-3.elasticbeanstalk.com/admin/user/${userId}`);
+    }
+
     getUserById(id) {
-        return axios.get("https://jsonplaceholder.typicode.com/users/" + id);
+        return axios.get("https://smapi.eu-west-3.elasticbeanstalk.com/admin/user/" + id);
     }
 }
