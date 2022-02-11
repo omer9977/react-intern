@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { roles } from '../../data/roles';
 import StudentService from '../../services/studentService';
 
 export default function StudentList() {
   const [students, setStudents] = useState([]);
 
+  const { userValue } = useSelector(state => state.user)
+
   useEffect(() => {
-    let studentService = new StudentService();
+    let studentService = new StudentService(roles[userValue.user.roleId]);
     studentService.getStudents().then(result => setStudents(result.data))
 
   }, [])
@@ -15,13 +19,12 @@ export default function StudentList() {
   return <Table responsive>
   <thead>
     <tr>
-      <th>ID</th>
+      <th>Student ID</th>
       <th>Student No</th>
       <th>Name</th>
       <th>Username</th>
       <th>Phone</th>
       <th>Email</th>
-      <th>Role</th>
       <th>School ID</th>
       <th>School Name</th>
       <th>School Address</th>
@@ -30,20 +33,20 @@ export default function StudentList() {
   <tbody>
     {
       students.map(student => (
-        <tr key={student.id}>
-          <td>{student.id}</td>
-          <td><Link to={`/teachers/${student.id}`}>{student.name} {student.surname}</Link></td>
+        <tr key={student.studentId}>
+          <td>{student.studentId}</td>
+          <td>{student.studentNo}</td>
+          <td><Link to={`/students/${student.studentId}`}>{student.name} {student.surname}</Link></td>
           <td>{student.username}</td>
           <td>{student.phoneNumber}</td>
           <td>{student.email}</td>
-          <td>{student.role}</td>
           <td>{student.schoolId}</td>
           <td>{student.schoolName}</td>
           <td>{student.schoolAdress}</td>
-          <td><Button variant='info' as={Link} to={`/students/${student.id}`}>Detail</Button></td>
+          <td><Button variant='info' as={Link} to={`/students/${student.studentId}`}>Detail</Button></td>
         </tr>
       ))}
   </tbody>
-  <Button as={Link} to="add" >Add New User</Button>
+  <Button as={Link} to="add" >Add New Student</Button>
 </Table>;;
 }

@@ -4,6 +4,7 @@ import CourseAdd from '../components/pages/CourseAdd';
 import CourseDetail from '../components/pages/CourseDetail';
 import CourseList from '../components/pages/CourseList';
 import Home from '../components/pages/Home';
+import StudentAdd from '../components/pages/StudentAdd';
 import StudentDetail from '../components/pages/StudentDetail';
 import StudentList from '../components/pages/StudentList';
 import TeacherAdd from '../components/pages/TeacherAdd';
@@ -23,6 +24,7 @@ export function getRoutesByRoleId(roleId) {
             <Route path='courses/:id' exact element={<CourseDetail />} />
             <Route path='courses/add' exact element={<CourseAdd />} />
             <Route path='students' exact element={<StudentList />} />
+            <Route path='students/add' exact element={<StudentAdd />} />
             <Route path='students/:id' exact element={<StudentDetail />} />
             <Route path='teachers' exact element={<TeacherList />} />
             <Route path='teachers/add' exact element={<TeacherAdd />} />
@@ -36,6 +38,7 @@ export function getRoutesByRoleId(roleId) {
             {console.log("4")}
             <Route path='/' exact element={<Home />} />
             <Route path='students' exact element={<StudentList />} />
+            <Route path='students/add' exact element={<StudentAdd />} />
             <Route path='students/:id' exact element={<StudentDetail />} />
             <Route path='teachers' exact element={<TeacherList />} />
             <Route path='teachers/add' exact element={<TeacherAdd />} />

@@ -5,16 +5,20 @@ import { Form, Formik } from 'formik';
 import TextInput from '../../utilities/formControl';
 import { toast } from 'react-toastify';
 import StudentService from '../../services/studentService';
+import { useSelector } from 'react-redux';
+import { roles } from '../../data/roles';
 
 export default function StudentDetail() {
   let { id } = useParams()
 
+  const { userValue } = useSelector(state => state.user)
+
   const [student, setStudent] = useState({});
 
-  let studentService = new StudentService();
+  let studentService = new StudentService(roles[userValue.user.roleId]);
 
-  function deleteUser(studentId) {
-    studentService.deleteUser(studentId).then(response => {toast.info(`${student.name} ${student.surname} is deleted.`)})
+  function deleteStudent(studentId) {
+    studentService.deleteStudent(studentId).then(response => {toast.info(`Student is deleted successfully.`)})
     .catch(error => {
       if(error){
         toast.error(`${error}`)
@@ -23,32 +27,28 @@ export default function StudentDetail() {
   }
 
   useEffect(() => {
-    studentService.getUserById(id).then(result => setStudent(result.data))
+    studentService.getStudentById(id).then(result => setStudent(result.data))
   }, [])
   return <Formik
   ><Form className='ui form'>
       <label>ID</label>
-      <TextInput disabled name="id" value={student.id}></TextInput>
+      <TextInput disabled name="Student Id" value={id}></TextInput>
       <label>Student No</label>
       <TextInput disabled name="studentNo" value={student.studentNo}></TextInput>
-      <label>Name</label>
-      <TextInput disabled name="name" value={`${student.name} ${student.surname}`}></TextInput>
+       <label>Name</label>
+      <TextInput disabled name="name" value={`${student.user.name} ${student.user.surname}`}></TextInput>
       <label>Username</label>
-      <TextInput disabled name="username" value={student.username}></TextInput>
+      <TextInput disabled name="username" value={student.user.username}></TextInput>
       <label>Phone Number</label>
-      <TextInput disabled name="phoneNumber" value={student.phoneNumber}></TextInput>
+      <TextInput disabled name="phoneNumber" value={student.user.phoneNumber}></TextInput>
       <label>Email</label>
-      <TextInput disabled name="email" value={student.email}></TextInput>
-      <label>Role</label>
-      <TextInput disabled name="role" value={student.role}></TextInput>
-      <label>School ID</label>
-      <TextInput disabled name="schoolId" value={student.schoolId}></TextInput>
+      <TextInput disabled name="email" value={student.user.email}></TextInput>
       <label>School Name</label>
-      <TextInput disabled name="schoolName" value={student.schoolName}></TextInput>
+      <TextInput disabled name="schoolName" value={student.school.name}></TextInput>
       <label>School Adress</label>
-      <TextInput disabled name="schoolAdress" value={student.schoolAdress}></TextInput>
+      <TextInput disabled name="schoolAdress" value={student.school.address}></TextInput>
 
-      <Button onClick={()=>{deleteUser(student.id)}} variant="danger" type="button">
+      <Button onClick={()=>{deleteStudent(id)}} variant="danger" type="button">
         Delete
       </Button>
     </Form></Formik>;

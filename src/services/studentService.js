@@ -11,7 +11,7 @@ export default class StudentService {
     }
     
     getStudentById(id){
-        return axios.get(`http://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/student/`+id);
+        return axios.get(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/student/`+id);
     }
     addStudent(values){
         return axios.post(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/student/`,values);

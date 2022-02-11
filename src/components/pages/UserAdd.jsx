@@ -29,7 +29,7 @@ export default function UserAdd() {
 
   function handleSubmit(values) {
     let userService = new UserService();
-    userService.addUser(values).then(response => {toast.success(`${values.name} ${values.surname} is added.`)})
+    userService.addUser(values).then(response => {toast.success(`${values.name} ${values.surname} is added successfully.`)})
     .catch(error => {
       if(error){
         toast.error(`${error}`)
