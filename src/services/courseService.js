@@ -4,19 +4,20 @@ export default class CourseService{
     constructor(role){
         this.role = role;
     }
-    
-    getCoursess(){
-        return axios.get("https://fakestoreapi.com/products");
-    }
+
     getCourses(){
-        return axios.get(`http://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lessons`);
+        return axios.get(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lessons`);
     }
-
-    addCourse(values){
-        return axios.post(`http://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`,values);
-    }
-
+    
     getCourseById(id){
-        return axios.get("https://fakestoreapi.com/products/"+id);
+        return axios.get(`http://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`+id);
     }
+    addCourse(values){
+        return axios.post(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`,values);
+    }
+
+    deleteCourse(id){
+        return axios.delete(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`+id);
+    }
+
 }

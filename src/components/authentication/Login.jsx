@@ -31,16 +31,20 @@ export default function Login() {
 
   async function handleSubmit(values) {
     let userService = new UserService();
-
+    let user = {};
+    await userService.getUserByUsernameAndPassword(values.username, values.password).then(result => user = result);
+    token(user.token);
+  //   if (typeof userValue != "undefined") {
+  //     console.log(userValue.user.roleId);
+  //  }
+  //  else{
+  //    console.log("asdfasdf")
+  //  }
     
-
-    let user = {}
-    await userService.getUserByUsernameAndPassword(values.username, values.password).then(result => user = result)
-    token(user.token)
-    console.log(user.token)
-    dispatch(login(user))
+    dispatch(login(user));
     // history.push("/");
   }
+
 
   return <div className='login'><Formik
     initialValues={initialValues}

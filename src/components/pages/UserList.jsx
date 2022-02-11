@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
-  
-
 
   useEffect(() => {
     let userService = new UserService();

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as Yup from "yup";
 import { Button } from 'react-bootstrap';
 import { Form, Formik } from 'formik';
 import TextInput from '../../utilities/formControl';
@@ -13,21 +12,6 @@ export default function UserDetail() {
   const [user, setUser] = useState({});
 
   let userService = new UserService();
-
-  const initialValues = {
-    id: '',
-    name: '',
-    subject: '',
-    teacherId: '',
-    teacherName: ''
-  }
-
-  const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
-    subject: Yup.string().required('Required'),
-    teacherId: Yup.string().required('Required'),
-    teacherName: Yup.string().required('Required')
-  })
 
   function deleteUser(userId) {
     userService.deleteUser(userId).then(response => {toast.info(`${user.name} ${user.surname} is deleted.`)})
@@ -42,12 +26,6 @@ export default function UserDetail() {
     userService.getUserById(id).then(result => setUser(result.data))
   }, [])
   return <Formik
-    initialValues={initialValues}
-    validationSchema={validationSchema}
-    onSubmit={(values) => {
-      // handleSubmit(values)
-      console.log(values)
-    }}
   ><Form className='ui form'>
       <label>ID</label>
       <TextInput disabled name="id" value={user.id}></TextInput>

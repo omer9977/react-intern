@@ -1,7 +1,6 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { FormField } from 'semantic-ui-react';
 import * as Yup from "yup";
 import CourseService from '../../services/courseService';
 import TextInput from '../../utilities/formControl';
