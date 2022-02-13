@@ -2,8 +2,8 @@ import { Form, Formik } from 'formik';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as Yup from "yup";
-import UserService from '../../services/userService';
-import TextInput from '../../utilities/formControl';
+import UserService from '../../../services/userService';
+import TextInput from '../../../utilities/formControl';
 import { toast } from 'react-toastify'
 
 export default function UserAdd() {

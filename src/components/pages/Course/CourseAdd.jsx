@@ -2,10 +2,15 @@ import { Form, Formik } from 'formik';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as Yup from "yup";
-import CourseService from '../../services/courseService';
-import TextInput from '../../utilities/formControl';
+import CourseService from '../../../services/courseService';
+import TextInput from '../../../utilities/formControl';
+import { toast } from 'react-toastify';
+import { roles } from '../../../data/roles';
+import { useSelector } from 'react-redux';
 
 export default function CourseAdd() {
+    const { userValue } = useSelector(state => state.user)
+
     const initialValues = {
         name: '',
         subject: '',
@@ -19,8 +24,13 @@ export default function CourseAdd() {
     })
 
     function handleSubmit(values){
-        let courseService = new CourseService();
-        courseService.addCourse(values)
+        let courseService = new CourseService(roles[userValue.user.roleId]);
+        courseService.addCourse(values).then(response => {toast.success(`${values.name} is added successfully.`)})
+        .catch(error => {
+          if(error){
+            toast.error(`${error}`)
+          }
+        });
     }
 
     return <Formik

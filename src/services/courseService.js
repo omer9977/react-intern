@@ -10,8 +10,9 @@ export default class CourseService{
     }
     
     getCourseById(id){
-        return axios.get(`http://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`+id);
+        return axios.get(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`+id);
     }
+
     addCourse(values){
         return axios.post(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`,values);
     }
@@ -20,4 +21,21 @@ export default class CourseService{
         return axios.delete(`https://smapi.eu-west-3.elasticbeanstalk.com/${this.role}/lesson/`+id);
     }
 
+
+    //For Student
+    getCoursesByUserId(userId){
+        return axios.get(`https://smapi.eu-west-3.elasticbeanstalk.com/student/${userId}/lessons`)
+    }
+
+    addCourseByUserIdAndLessonId(userId, lessonId, values){
+        return axios.post(`https://smapi.eu-west-3.elasticbeanstalk.com/student/${userId}/lesson/${lessonId}`,values);   
+    }
+
+    getCourseByUserIdAndLessonId(userId, lessonId){
+        return axios.get(`https://smapi.eu-west-3.elasticbeanstalk.com/student/${userId}/lesson/${lessonId}`);   
+    }
+
+    deleteCourseByUserIdAndLessonId(userId, lessonId){
+        return axios.delete(`https://smapi.eu-west-3.elasticbeanstalk.com/student/${userId}/lesson/${lessonId}`);   
+    }
 }

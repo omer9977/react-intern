@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { roles } from '../../data/roles';
-import TeacherService from '../../services/teacherService';
+import { roles } from '../../../data/roles';
+import TeacherService from '../../../services/teacherService';
 
 export default function TeacherList() {
   const [teachers, setTeachers] = useState([]);

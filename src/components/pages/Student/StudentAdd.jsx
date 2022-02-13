@@ -2,10 +2,10 @@ import { Form, Formik } from 'formik';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as Yup from "yup";
-import StudentService from '../../services/studentService';
-import TextInput from '../../utilities/formControl';
+import StudentService from '../../../services/studentService';
+import TextInput from '../../../utilities/formControl';
 import { toast } from 'react-toastify'
-import { roles } from '../../data/roles';
+import { roles } from '../../../data/roles';
 import { useSelector } from 'react-redux';
 
 export default function StudentAdd() {

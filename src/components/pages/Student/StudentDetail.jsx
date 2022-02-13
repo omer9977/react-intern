@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Form, Formik } from 'formik';
-import TextInput from '../../utilities/formControl';
+import TextInput from '../../../utilities/formControl';
 import { toast } from 'react-toastify';
-import StudentService from '../../services/studentService';
+import StudentService from '../../../services/studentService';
 import { useSelector } from 'react-redux';
-import { roles } from '../../data/roles';
+import { roles } from '../../../data/roles';
 
 export default function StudentDetail() {
   let { id } = useParams()
@@ -32,7 +32,7 @@ export default function StudentDetail() {
   return <Formik
   ><Form className='ui form'>
       <label>ID</label>
-      <TextInput disabled name="Student Id" value={id}></TextInput>
+      <TextInput disabled name="studentId" value={id}></TextInput>
       <label>Student No</label>
       <TextInput disabled name="studentNo" value={student.studentNo}></TextInput>
        <label>Name</label>

@@ -13,7 +13,7 @@ import { token } from '../../data/token';
 
 export default function Login() {
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -34,15 +34,8 @@ export default function Login() {
     let user = {};
     await userService.getUserByUsernameAndPassword(values.username, values.password).then(result => user = result);
     token(user.token);
-  //   if (typeof userValue != "undefined") {
-  //     console.log(userValue.user.roleId);
-  //  }
-  //  else{
-  //    console.log("asdfasdf")
-  //  }
-    
+    console.log(user.token)
     dispatch(login(user));
-    // history.push("/");
   }
 
 
@@ -51,6 +44,7 @@ export default function Login() {
     validationSchema={validationSchema}
     onSubmit={(values) => {
       handleSubmit(values)
+      navigate("/")
     }}
   >
     <Segment size='huge' padded color='black'>

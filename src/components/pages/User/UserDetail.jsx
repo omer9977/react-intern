@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Form, Formik } from 'formik';
-import TextInput from '../../utilities/formControl';
-import UserService from '../../services/userService';
+import TextInput from '../../../utilities/formControl';
+import UserService from '../../../services/userService';
 import { toast } from 'react-toastify';
 
 export default function UserDetail() {

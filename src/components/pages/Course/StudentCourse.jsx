@@ -2,20 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Form, Formik } from 'formik';
-import TextInput from '../../utilities/formControl';
+import TextInput from '../../../utilities/formControl';
 import { toast } from 'react-toastify';
-import CourseService from '../../services/courseService';
+import CourseService from '../../../services/courseService';
+import { useSelector } from 'react-redux';
+import { roles } from '../../../data/roles';
 
 
-export default function CourseDetail() {
+export default function StudentCourse() {
+  const { userValue } = useSelector(state => state.user)
+
   let { id } = useParams()
 
   const [course, setCourse] = useState({});
 
-  let courseService = new CourseService();
+  let courseService = new CourseService(roles[userValue.user.roleId]);
 
-  function deleteUser(courseId) {
-    courseService.deleteUser(courseId).then(response => {toast.info(`${course.name} ${course.surname} is deleted.`)})
+  function deleteCourse(courseId) {
+    courseService.deleteCourseByUserIdAndLessonId(userValue.user.id, id).then(response => {toast.info(`${course.name} is deleted successfully.`)})
     .catch(error => {
       if(error){
         toast.error(`${error}`)
@@ -24,7 +28,7 @@ export default function CourseDetail() {
   }
 
   useEffect(() => {
-    courseService.getUserById(id).then(result => setCourse(result.data))
+    courseService.getCourseByUserIdAndLessonId(userValue.user.id, id).then(result => setCourse(result.data))
   }, [])
   return <Formik
   ><Form className='ui form'>
@@ -39,7 +43,7 @@ export default function CourseDetail() {
       <label>Teacher Name</label>
       <TextInput disabled name="teacherName" value={course.teacherName}></TextInput>
 
-      <Button onClick={()=>{deleteUser(course.id)}} variant="danger" type="button">
+      <Button onClick={()=>{deleteCourse(course.id)}} variant="danger" type="button">
         Delete
       </Button>
     </Form></Formik>;

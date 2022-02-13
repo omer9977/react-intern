@@ -1,19 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import Login from '../components/authentication/Login';
-import CourseAdd from '../components/pages/CourseAdd';
-import CourseDetail from '../components/pages/CourseDetail';
-import CourseList from '../components/pages/CourseList';
+import CourseAdd from '../components/pages/Course/CourseAdd';
+import CourseDetail from '../components/pages/Course/CourseDetail';
+import CourseList from '../components/pages/Course/CourseList';
+import StudentCourse from '../components/pages/Course/StudentCourse';
+import StudentCourses from '../components/pages/Course/StudentCourses';
 import Home from '../components/pages/Home';
-import StudentAdd from '../components/pages/StudentAdd';
-import StudentDetail from '../components/pages/StudentDetail';
-import StudentList from '../components/pages/StudentList';
-import TeacherAdd from '../components/pages/TeacherAdd';
-import TeacherDetail from '../components/pages/TeacherDetail';
-import TeacherList from '../components/pages/TeacherList';
-import UserAdd from '../components/pages/UserAdd';
-import UserDetail from '../components/pages/UserDetail';
-import UserList from '../components/pages/UserList';
-import RequireAuth from './requireAuth';
+import StudentAdd from '../components/pages/Student/StudentAdd';
+import StudentDetail from '../components/pages/Student/StudentDetail';
+import StudentList from '../components/pages/Student/StudentList';
+import TeacherAdd from '../components/pages/Teacher/TeacherAdd';
+import TeacherDetail from '../components/pages/Teacher/TeacherDetail';
+import TeacherList from '../components/pages/Teacher/TeacherList';
+import UserAdd from '../components/pages/User/UserAdd';
+import UserDetail from '../components/pages/User/UserDetail';
+import UserList from '../components/pages/User/UserList';
 
 export function getRoutesByRoleId(roleId) {
     if (roleId === 5) {
@@ -58,9 +59,11 @@ export function getRoutesByRoleId(roleId) {
         return <Routes>
             {console.log("2")}
             <Route path='/' exact element={<Home />} />
+            {/* <Route path={['/courses','/coursess']} exact element={<CourseList />} /> */}
             <Route path='courses' exact element={<CourseList />} />
+            <Route path='courses/student' element={<StudentCourses />} />
             <Route path='courses/:id' exact element={<CourseDetail />} />
-            <Route path='courses/add' exact element={<CourseAdd />} />
+            <Route path='courses/student/:id' exact element={<StudentCourse />} />
         </Routes>
     }
     else {
@@ -68,7 +71,6 @@ export function getRoutesByRoleId(roleId) {
             {console.log("1")}
             <Route exact path='/' element={<Home />} />
             <Route exact path='login' element={<Login />} />
-            <Route path='login' element={<Login />} />
         </Routes>
     }
 }

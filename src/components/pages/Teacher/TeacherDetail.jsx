@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Form, Formik } from 'formik';
-import TextInput from '../../utilities/formControl';
+import TextInput from '../../../utilities/formControl';
 import { toast } from 'react-toastify';
-import TeacherService from '../../services/teacherService';
+import TeacherService from '../../../services/teacherService';
 import { useSelector } from 'react-redux';
-import { roles } from '../../data/roles';
+import { roles } from '../../../data/roles';
 
 export default function TeacherDetail() {
   let { id } = useParams()

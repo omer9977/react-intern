@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
-import UserService from '../../services/userService';
+import UserService from '../../../services/userService';
 import { Link } from 'react-router-dom';
 
 export default function UserList() {
