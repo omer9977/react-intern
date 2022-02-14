@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function SignedIn({signOut}) {
   return <Nav.Item>
-  <Button as={Link} to="/" onClick={signOut} className='button'>Logout</Button>
+  <div as={Link} to="/" onClick={signOut} >Logout</div>
 </Nav.Item>
 ;
 }

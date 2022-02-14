@@ -6,7 +6,7 @@ export default function AddNewCourse({roleId}) {
     const authRoles=[3,5]
   return (
     <>  
-    {authRoles.indexOf(roleId)>-1 ? <Button as={Link} to="add" >Add New Course</Button>: <></>}
+    {authRoles.indexOf(roleId)>-1 ? <Button as={Link} to="/courses/add" >Add New Course</Button>: <></>}
     </>
   )
 }

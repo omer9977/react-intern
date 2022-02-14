@@ -10,14 +10,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 import { token } from '../../data/token';
+import { toast } from 'react-toastify';
 
 export default function Login() {
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-  const { userValue } = useSelector(state => state.user)
 
   const initialValues = {
     username: '',
@@ -32,9 +31,12 @@ export default function Login() {
   async function handleSubmit(values) {
     let userService = new UserService();
     let user = {};
-    await userService.getUserByUsernameAndPassword(values.username, values.password).then(result => user = result);
+    await userService.getUserByUsernameAndPassword(values.username, values.password).then(result => {
+      
+      user = result;
+      navigate("/")
+    }).catch(error=> {toast.error(`Username or password is wrong!!!`)});
     token(user.token);
-    console.log(user.token)
     dispatch(login(user));
   }
 
@@ -44,7 +46,6 @@ export default function Login() {
     validationSchema={validationSchema}
     onSubmit={(values) => {
       handleSubmit(values)
-      navigate("/")
     }}
   >
     <Segment size='huge' padded color='black'>

@@ -5,6 +5,7 @@ export function token(token) {
         config => {
             config.headers.authorization = `Bearer ${token}`;
             return config
-        }
+        },
+        error => {console.log("error")}
     )
 }

@@ -38,4 +38,13 @@ export default class CourseService{
     deleteCourseByUserIdAndLessonId(userId, lessonId){
         return axios.delete(`https://smapi.eu-west-3.elasticbeanstalk.com/student/${userId}/lesson/${lessonId}`);   
     }
+
+    //For Teacher
+    getCoursesForTeacher(){
+        return axios.get(`https://smapi.eu-west-3.elasticbeanstalk.com/teacher/lessons`)
+    }
+
+    getCoursesForTeacher(){
+        return axios.get(`https://smapi.eu-west-3.elasticbeanstalk.com/admin/lessons`);
+    }
 }

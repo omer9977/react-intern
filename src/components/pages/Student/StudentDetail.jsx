@@ -35,7 +35,7 @@ export default function StudentDetail() {
       <TextInput disabled name="studentId" value={id}></TextInput>
       <label>Student No</label>
       <TextInput disabled name="studentNo" value={student.studentNo}></TextInput>
-       <label>Name</label>
+       {/* <label>Name</label>
       <TextInput disabled name="name" value={`${student.user.name} ${student.user.surname}`}></TextInput>
       <label>Username</label>
       <TextInput disabled name="username" value={student.user.username}></TextInput>
@@ -46,7 +46,7 @@ export default function StudentDetail() {
       <label>School Name</label>
       <TextInput disabled name="schoolName" value={student.school.name}></TextInput>
       <label>School Adress</label>
-      <TextInput disabled name="schoolAdress" value={student.school.address}></TextInput>
+      <TextInput disabled name="schoolAdress" value={student.school.address}></TextInput> */}
 
       <Button onClick={()=>{deleteStudent(id)}} variant="danger" type="button">
         Delete

@@ -16,14 +16,21 @@ export const SidebarData = [
     path: '/courses',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
-    roleIds: [2, 3, 5]
+    roleIds: [2, 5]
+  },
+  {
+    title: 'Courses',
+    path: '/courses/teacher',
+    icon: <IoIcons.IoIosPaper />,
+    cName: 'nav-text',
+    roleIds: [3]
   },
   {
     title: 'MyCourses',
     path: '/courses/student',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
-    roleIds: [2, 3, 5]
+    roleIds: [2]
   },
   {
     title: 'Students',
