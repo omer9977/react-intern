@@ -10,10 +10,13 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Navi() {
   const {userValue} = useSelector(state => state.user)
 
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   function handleSignOut(){
     dispatch(logout())
+    navigate("/")
     window.location.reload();
   }
 
