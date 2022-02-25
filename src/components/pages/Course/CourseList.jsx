@@ -8,7 +8,7 @@ import CourseService from '../../../services/courseService';
 import AddNewCourse from '../Buttons/AddNewCourse';
 import TakeCourse from '../Buttons/TakeCourse';
 
-export default function CourseList({roleId}) {
+export default function CourseList() {
   const [courses, setCourses] = useState([]);
 
   const { userValue } = useSelector(state => state.user)
@@ -27,13 +27,9 @@ export default function CourseList({roleId}) {
 
 
   useEffect(() => {
-    console.log(roleId)
-    if (roleId===2) {
-      courseService.getCoursesByUserId(userValue.user.id).then(result => setCourses(result.data))
-    } else {
+      // courseService.getCoursesByUserId(userValue.user.id).then(result => setCourses(result.data))
       courseService.getCourses().then(result => setCourses(result.data))
       
-    }
 
   }, [])
 
@@ -52,11 +48,11 @@ export default function CourseList({roleId}) {
       courses.map(course => (
         <tr key={course.id}>
           <td>{course.id}</td>
-          <td><Link to={`/courses/${course.id}`}>{course.name} {course.surname}</Link></td>
+          <td>{course.name}</td>
           <td>{course.subject}</td>
           <td>{course.teacherId}</td>
           <td>{course.teacherName}</td>
-          <td><Button variant='info' as={Link} to={`/courses/${course.id}`}>Detail</Button></td>
+          {userValue.user.roleId===5 ? <td><Button variant='info' as={Link} to={`/courses/${course.id}`}>Detail</Button></td>:<></>}
           <th><TakeCourse click={()=>takeCourse(userValue.user.id, course.id, course)} roleId={userValue.user.roleId}/></th>
         </tr>
       ))}

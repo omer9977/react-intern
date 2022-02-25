@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { roles } from '../../../data/roles';
 import CourseService from '../../../services/courseService';
+import AddNewCourseForTeacher from '../Buttons/AddCourseForTeacher';
 import AddNewCourse from '../Buttons/AddNewCourse';
 import TakeCourse from '../Buttons/TakeCourse';
 
@@ -15,7 +16,7 @@ export default function TeacherCourses() {
   let courseService = new CourseService(roles[userValue.user.roleId]);
 
   useEffect(() => {
-    courseService.getCoursesForTeacher().then(result => setCourses(result.data))
+    courseService.getCourses().then(result => setCourses(result.data))
   }, [])
 
   return <Table responsive>
@@ -37,10 +38,10 @@ export default function TeacherCourses() {
           <td>{course.subject}</td>
           <td>{course.teacherId}</td>
           <td>{course.teacherName}</td>
-          <td><Button variant='info' as={Link} to={`/courses/student/${course.id}`}>Detail</Button></td>
+          <td><Button variant='info' as={Link} to={`/courses/${course.id}`}>Detail</Button></td>
         </tr>
       ))}
   </tbody>
-  <AddNewCourse roleId={userValue.user.roleId}/>
+  <AddNewCourseForTeacher roleId={userValue.user.roleId}/>
 </Table>;;
 }

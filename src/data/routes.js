@@ -17,6 +17,7 @@ import Profil from '../components/pages/User/Profil';
 import UserAdd from '../components/pages/User/UserAdd';
 import UserDetail from '../components/pages/User/UserDetail';
 import UserList from '../components/pages/User/UserList';
+import TeacherCourseAdd from '../components/pages/Course/TeacherCourseAdd';
 
 export function getRoutesByRoleId(roleId) {
     if (roleId === 5) {
@@ -58,6 +59,7 @@ export function getRoutesByRoleId(roleId) {
             <Route path='courses/teacher' exact element={<TeacherCourses />} />
             <Route path='courses/:id' exact element={<CourseDetail />} />
             <Route path='courses/add' exact element={<CourseAdd />} />
+            <Route path='courses/:teacherId/add' exact element={<TeacherCourseAdd />} />
             <Route path='profil' element={<Profil />} />
         </Routes>
     }

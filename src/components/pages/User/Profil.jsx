@@ -6,29 +6,16 @@ import UserService from '../../../services/userService';
 import { useSelector } from 'react-redux';
 
 export default function Profil() {
-
-  const [user, setUser] = useState({});
-
   const { userValue } = useSelector(state => state.user)
-
-  let userService = new UserService();
-
-  useEffect(() => {
-    userService.getUserById(userValue.user.id).then(result => setUser(result.data))
-  }, [])
   return <Formik
   ><Form className='ui form'>
       <label>ID</label>
-      <TextInput disabled name="id" value={user.id}></TextInput>
+      <TextInput disabled name="id" value={userValue.user.id}></TextInput>
       <label>Username</label>
-      <TextInput disabled name="username" value={user.username}></TextInput>
+      <TextInput disabled name="username" value={userValue.user.username}></TextInput>
       <label>Name</label>
-      <TextInput disabled name="name" value={`${user.name} ${user.surname}`}></TextInput>
-      <label>Phone Number</label>
-      <TextInput disabled name="phoneNumber" value={user.phoneNumber}></TextInput>
-      <label>Email</label>
-      <TextInput disabled name="email" value={user.email}></TextInput>
+      <TextInput disabled name="name" value={`${userValue.user.firstName} ${userValue.user.lastName}`}></TextInput>
       <label>Role</label>
-      <TextInput disabled name="role" value={user.role}></TextInput>
+      <TextInput disabled name="role" value={userValue.user.roleName}></TextInput>
     </Form></Formik>;
 }

@@ -35,7 +35,7 @@ export default function CourseDetail() {
       <label>ID</label>
       <TextInput disabled name="id" value={course.id}></TextInput>
       <label>Name</label>
-      <TextInput disabled name="name" value={`${course.name} ${course.surname}`}></TextInput>
+      <TextInput disabled name="name" value={`${course.name}`}></TextInput>
       <label>Subject</label>
       <TextInput disabled name="subject" value={course.subject}></TextInput>
       <label>Teacher ID</label>
