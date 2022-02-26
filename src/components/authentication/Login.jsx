@@ -34,10 +34,13 @@ export default function Login() {
     await userService.getUserByUsernameAndPassword(values.username, values.password).then(result => {
       
       user = result;
-      navigate("/")
-    }).catch(error=> {toast.error(`Username or password is wrong!!!`)});
-    token(user.token);
-    dispatch(login(user));
+      navigate("/");
+      token(user.token);
+      dispatch(login(user));
+    }).catch(error=> {
+      toast.error(`Username or password is wrong!!!`);
+    });
+  
   }
 
 
